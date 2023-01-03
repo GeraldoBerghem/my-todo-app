@@ -11,21 +11,19 @@ Performance pode ser um issue
 import streamlit as st
 import functions as fu
 
-todos = fu.get_todos("/Users/geraldovanberghem/NovoCurso/Day19/todos.txt")
+todos = fu.get_todos()
 chkboxkey = 0
 
 def add_todo():
     todo = st.session_state["new_todo"] + "\n"
     if len(todo) > 1:
         todos.append(todo)
-        fu.write_todos(todos,
-                       "/Users/geraldovanberghem/NovoCurso/Day19/todos.txt")
+        fu.write_todos(todos)
 
 def complete_todo(todo_arg):
 
     todos.remove(todo_arg)
-    fu.write_todos(todos,
-                   "/Users/geraldovanberghem/NovoCurso/Day19/todos.txt")
+    fu.write_todos(todos)
     del st.session_state[todo_arg]
     st.experimental_rerun()
 
